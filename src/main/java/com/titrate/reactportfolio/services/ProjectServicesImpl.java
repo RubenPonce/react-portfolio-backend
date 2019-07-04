@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,8 +30,9 @@ public class ProjectServicesImpl implements ProjectService {
     public Project save(Project project) {
             Project newProject = new Project();
             newProject.setProjectname(project.getProjectname());
-            newProject.setDemo(project.getDemo());
+            newProject.setLivelink(project.getLivelink());
             newProject.setDescription(project.getDescription());
+            newProject.setShown(project.isShown());
             for (String s : project.getTechnologies()){
                 newProject.getTechnologies().add(s);
             }
@@ -39,6 +41,15 @@ public class ProjectServicesImpl implements ProjectService {
             return projectRepository.save(project);
     }
 
+    @Transactional
+    @Override
+    public void deleteById(long id){
+        projectRepository.deleteById(id);
+    }
 
+    @Override
+    public Project findProjectById(long id) {
+            return projectRepository.findById(id).orElseThrow(()-> new EntityNotFoundException(Long.toString(id)));
 
+    }
 }

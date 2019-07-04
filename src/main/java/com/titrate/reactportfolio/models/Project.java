@@ -36,6 +36,10 @@ public class Project {
     @Column(name = "sourcecode")
     private String sourcecode;
 
+    @JsonProperty("shown")
+    @Column(name = "shown", nullable = false)
+    private boolean shown = true;
+
     public Project() {
     }
 
@@ -79,19 +83,27 @@ public class Project {
         this.description = description;
     }
 
-    public String getDemo() {
-        return livelink;
-    }
-
-    public void setDemo(String livelink) {
-        this.livelink = livelink;
-    }
-
     public String getSourcecode() {
         return sourcecode;
     }
 
     public void setSourcecode(String sourcecode) {
         this.sourcecode = sourcecode;
+    }
+
+    public String getLivelink() {
+        return livelink;
+    }
+
+    public void setLivelink(String livelink) {
+        this.livelink = livelink;
+    }
+
+    public boolean isShown() {
+        return shown;
+    }
+
+    public void setShown(boolean shown) {
+        this.shown = shown;
     }
 }

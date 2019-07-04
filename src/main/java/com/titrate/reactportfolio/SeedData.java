@@ -1,7 +1,6 @@
 package com.titrate.reactportfolio;
 
 import com.titrate.reactportfolio.models.Project;
-import com.titrate.reactportfolio.repositories.ProjectRepository;
 import com.titrate.reactportfolio.services.ProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -9,7 +8,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
-import java.util.List;
 
 @Transactional
 @Component
