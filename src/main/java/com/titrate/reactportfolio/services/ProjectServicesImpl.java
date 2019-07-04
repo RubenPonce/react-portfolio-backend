@@ -3,6 +3,7 @@ package com.titrate.reactportfolio.services;
 import com.titrate.reactportfolio.models.Project;
 import com.titrate.reactportfolio.repositories.ProjectRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,9 +19,9 @@ public class ProjectServicesImpl implements ProjectService {
     @Autowired
     ProjectService projectService;
     @Override
-    public List<Project> findAll() {
+    public List<Project> findAll(Pageable pageable) {
         List<Project> list = new ArrayList<>();
-        projectRepository.findAll().iterator().forEachRemaining(list::add);
+        projectRepository.findAll(pageable).iterator().forEachRemaining(list::add);
         return list;
     }
 

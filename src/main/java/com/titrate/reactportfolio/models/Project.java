@@ -18,14 +18,14 @@ public class Project {
     private long projectid;
 
     @JsonProperty("name")
-    @Column(name = "name")
+    @Column(name = "name", nullable = false)
     private String projectname;
 
     //An Array of Strings;
     @ElementCollection
     private List<String> technologies = new ArrayList<>();
 
-    @Column
+    @Column(name = "description", nullable = false)
     private String description;
 
     @JsonProperty("liveLink")
